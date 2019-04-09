@@ -3,8 +3,11 @@ package com.example.arrayadapter;
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
         );
 
         listaItens.setAdapter(adaptador);
+
+        listaItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String valorDoLocalClicado=listaItens.getItemAtPosition(position).toString();
+
+                Toast.makeText(getApplicationContext(),valorDoLocalClicado,Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
 
 
 
